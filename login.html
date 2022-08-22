@@ -19,7 +19,7 @@
             <input id="password" type="password" class="input-field" placeholder="Enter Password" required>
             <span> <i class="fa fa-eye" aria-hidden="true" id="eye" onclick="toggle()"></i></span>
             <input type="checkbox" class="check-box"><span> Remember Password </span>
-            <button type="submit" class="submit-btn" onclick="return validate()"> Log In</button>
+            <button type="submit" class="submit-btn" onclick="validate()"> Log In</button>
         </form>
         <form id="register" class="input-group">
             <input type="username" class="input-field" placeholder="username" required>
@@ -55,8 +55,7 @@
 
             if(username === "admin" && password === "password"){
                 alert("Login Successfully");
-                window.location.replace="http://stackoverflow.com";
-                return false;
+                href="welcome.html";
             }
             else{
                 alert("Wrong password");
