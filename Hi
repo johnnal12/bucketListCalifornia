@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Define the script to be run and the log file
+SCRIPT_PATH="./your_script.sh"
+LOG_FILE="./script_runs.log"
+
+# Function to log messages
+log_message() {
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$LOG_FILE"
+}
+
+# Main loop to run the script 5 times
+for i in {1..5}; do
+    log_message "Starting run $i of the script."
+    START_TIME=$(date +%s)
+    
+    # Execute the script and capture its output and exit status
+    OUTPUT=$($SCRIPT_PATH 2>&1)
+    STATUS=$?
+    
+    END_TIME=$(date +%s)
+    
+    if [ $STATUS -eq 0 ]; then
+        log_message "Completed run $i successfully in $((END_TIME - START_TIME)) seconds."
+    else
+        log_message "Run $i failed with status $STATUS. Check output below for details."
+        log_message "Error Output: $OUTPUT"
+    fi
+    
+    # Optionally, add a separator for readability in the log
+    echo "----------------------------------------" >> "$LOG_FILE"
+done
