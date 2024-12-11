@@ -4,82 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Applitools Configurator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-        }
-        input, select {
-            margin-bottom: 10px;
-            width: 100%;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #0078d7;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #005bb5;
-        }
-        pre {
-            background: #f4f4f4;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
+    <div>
         <h1>Applitools Configurator</h1>
         <form id="configForm">
-            <!-- Existing fields remain as-is -->
             <!-- API Key -->
-            <div class="form-group">
-                <label for="apiKey">API Key:</label>
+            <div>
+                <label><strong>API Key:</strong></label><br>
                 <input type="text" id="apiKey" placeholder="Enter your Applitools API key">
             </div>
 
             <!-- Application Name -->
-            <div class="form-group">
-                <label for="appName">Application Name:</label>
+            <div>
+                <label><strong>Application Name:</strong></label><br>
                 <input type="text" id="appName" placeholder="Enter the application name">
             </div>
 
             <!-- Test Name -->
-            <div class="form-group">
-                <label for="testName">Test Name:</label>
+            <div>
+                <label><strong>Test Name:</strong></label><br>
                 <input type="text" id="testName" placeholder="Enter the test name">
             </div>
 
             <!-- Batch Info -->
-            <div class="form-group">
-                <label for="batchName">Batch Name:</label>
+            <div>
+                <label><strong>Batch Name:</strong></label><br>
                 <input type="text" id="batchName" placeholder="Enter batch name (e.g., My Batch)">
             </div>
-            <div class="form-group">
-                <label for="batchId">Batch ID:</label>
+            <div>
+                <label><strong>Batch ID:</strong></label><br>
                 <input type="text" id="batchId" placeholder="Enter batch ID (e.g., batch-123)">
             </div>
 
             <!-- Browser -->
-            <div class="form-group">
-                <label for="browser">Desktop Browser:</label>
+            <div>
+                <label><strong>Desktop Browser:</strong></label><br>
                 <select id="browser">
                     <option value="CHROME">Chrome</option>
                     <option value="FIREFOX">Firefox</option>
@@ -89,18 +49,18 @@
             </div>
 
             <!-- Viewport Size -->
-            <div class="form-group">
-                <label for="viewportWidth">Viewport Width:</label>
+            <div>
+                <label><strong>Viewport Width:</strong></label><br>
                 <input type="number" id="viewportWidth" placeholder="Enter viewport width (e.g., 1280)">
             </div>
-            <div class="form-group">
-                <label for="viewportHeight">Viewport Height:</label>
+            <div>
+                <label><strong>Viewport Height:</strong></label><br>
                 <input type="number" id="viewportHeight" placeholder="Enter viewport height (e.g., 720)">
             </div>
 
             <!-- Apple Device -->
-            <div class="form-group">
-                <label for="appleDevice">Apple Device (Optional):</label>
+            <div>
+                <label><strong>Apple Device (Optional):</strong></label><br>
                 <select id="appleDevice">
                     <option value="">None</option>
                     <option value="iPhone_15_Pro_Max">iPhone 15 Pro Max</option>
@@ -112,8 +72,8 @@
             </div>
 
             <!-- Android Device -->
-            <div class="form-group">
-                <label for="androidDevice">Android Device (Optional):</label>
+            <div>
+                <label><strong>Android Device (Optional):</strong></label><br>
                 <select id="androidDevice">
                     <option value="">None</option>
                     <option value="Galaxy_S22_Ultra">Galaxy S22 Ultra</option>
@@ -126,8 +86,8 @@
             </div>
 
             <!-- Match Level -->
-            <div class="form-group">
-                <label for="matchLevel">Match Level:</label>
+            <div>
+                <label><strong>Match Level:</strong></label><br>
                 <select id="matchLevel">
                     <option value="STRICT">Strict</option>
                     <option value="CONTENT">Content</option>
@@ -136,47 +96,33 @@
                 </select>
             </div>
 
-            <!-- Force Full Page Screenshot -->
-            <div class="form-group">
-                <label for="forceFullPage">Force Full Page Screenshot:</label>
-                <select id="forceFullPage">
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
-                </select>
-            </div>
-
             <!-- Timeout -->
-            <div class="form-group">
-                <label for="matchTimeout">Match Timeout (ms):</label>
+            <div>
+                <label><strong>Match Timeout (ms):</strong></label><br>
                 <input type="number" id="matchTimeout" placeholder="Enter match timeout in milliseconds">
             </div>
 
-            <!-- Proxy -->
-            <div class="form-group">
-                <label for="proxyUrl">Proxy URL (Optional):</label>
-                <input type="text" id="proxyUrl" placeholder="Enter proxy URL">
-            </div>
-
-            <!-- Dropdown for action selection -->
-            <div class="form-group">
-                <label for="actionSelect">Choose an action:</label>
+            <!-- Dropdown for Generate or Download -->
+            <div>
+                <label><strong>Choose Action:</strong></label><br>
                 <select id="actionSelect">
-                    <option value="download">Download as File</option>
                     <option value="viewCode">View Generated Code</option>
+                    <option value="download">Download as File</option>
                 </select>
             </div>
 
-            <!-- Generate Button -->
+            <!-- Generate Code Button -->
             <button type="button" onclick="generateCode()">Generate Code</button>
         </form>
 
-        <!-- Generated Code Display -->
+        <!-- Generated Code Section -->
         <h2>Generated Code:</h2>
         <pre id="codeSnippet" style="display: none;">Fill in the form and click "Generate Code" to see the result here.</pre>
     </div>
 
     <script>
         function generateCode() {
+            // Collect input values
             const apiKey = document.getElementById('apiKey').value || "YOUR_API_KEY";
             const appName = document.getElementById('appName').value || "My Application";
             const testName = document.getElementById('testName').value || "My Test";
@@ -188,11 +134,10 @@
             const appleDevice = document.getElementById('appleDevice').value || null;
             const androidDevice = document.getElementById('androidDevice').value || null;
             const matchLevel = document.getElementById('matchLevel').value || "STRICT";
-            const forceFullPage = document.getElementById('forceFullPage').value || "true";
             const matchTimeout = document.getElementById('matchTimeout').value || 2000;
-            const proxyUrl = document.getElementById('proxyUrl').value || null;
             const action = document.getElementById('actionSelect').value;
 
+            // Generate Java code
             let code = `
 package com.yourcompany.utils;
 
@@ -219,33 +164,15 @@ public class ApplitoolsUtil {
             ${appleDevice ? `.addBrowser(new IosDeviceInfo(IosDeviceName.${appleDevice}, ScreenOrientation.PORTRAIT))` : ""}
             ${androidDevice ? `.addBrowser(new ChromeEmulationInfo(DeviceName.${androidDevice}, ScreenOrientation.PORTRAIT))` : ""}
             .setMatchLevel(MatchLevel.${matchLevel})
-            .setForceFullPageScreenshot(${forceFullPage})
-            .setMatchTimeout(${matchTimeout})
-            ${proxyUrl ? `.setProxy("${proxyUrl}")` : ""};
-    }
-
-    public static void runVisualTest(WebDriver driver, String checkpoint, RectangleSize viewportSize) {
-        if (eyes == null) {
-            throw new IllegalStateException("Applitools configuration is not set. Call setConfig() first.");
-        }
-        try {
-            eyes.open(driver, config.getAppName(), config.getTestName(), viewportSize);
-            eyes.checkWindow(checkpoint);
-            eyes.closeAsync();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            eyes.abortIfNotClosed();
-        }
+            .setMatchTimeout(${matchTimeout});
     }
 }
-`.trim();
-
+            `.trim();
 
             if (action === "viewCode") {
                 document.getElementById('codeSnippet').textContent = code;
                 document.getElementById('codeSnippet').style.display = 'block';
-            } else {
+            } else if (action === "download") {
                 const blob = new Blob([code], { type: 'text/java' });
                 const link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
