@@ -6,119 +6,113 @@
     <title>Applitools Configurator</title>
 </head>
 <body>
-    <div>
-        <h1>Applitools Configurator</h1>
-        <form id="configForm">
-            <!-- API Key -->
-            <div>
-                <label><strong>API Key:</strong></label><br>
-                <input type="text" id="apiKey" placeholder="Enter your Applitools API key">
-            </div>
+    <h1>Applitools Configurator</h1>
+    <form id="configForm">
+        <table style="width: 100%; border-spacing: 10px;">
+            <!-- Row 1 -->
+            <tr>
+                <td>
+                    <label><strong>API Key:</strong></label><br>
+                    <input type="text" id="apiKey" placeholder="Enter your Applitools API key" style="padding: 8px; width: 100%;">
+                </td>
+                <td>
+                    <label><strong>Application Name:</strong></label><br>
+                    <input type="text" id="appName" placeholder="Enter application name" style="padding: 8px; width: 100%;">
+                </td>
+                <td>
+                    <label><strong>Test Name:</strong></label><br>
+                    <input type="text" id="testName" placeholder="Enter test name" style="padding: 8px; width: 100%;">
+                </td>
+            </tr>
+            <!-- Row 2 -->
+            <tr>
+                <td>
+                    <label><strong>Batch Name:</strong></label><br>
+                    <input type="text" id="batchName" placeholder="Enter batch name" style="padding: 8px; width: 100%;">
+                </td>
+                <td>
+                    <label><strong>Batch ID:</strong></label><br>
+                    <input type="text" id="batchId" placeholder="Enter batch ID" style="padding: 8px; width: 100%;">
+                </td>
+                <td>
+                    <label><strong>Desktop Browser:</strong></label><br>
+                    <select id="browser" style="padding: 8px; width: 100%;">
+                        <option value="CHROME">Chrome</option>
+                        <option value="FIREFOX">Firefox</option>
+                        <option value="EDGE">Edge</option>
+                        <option value="SAFARI">Safari</option>
+                    </select>
+                </td>
+            </tr>
+            <!-- Row 3 -->
+            <tr>
+                <td>
+                    <label><strong>Viewport Width:</strong></label><br>
+                    <input type="number" id="viewportWidth" placeholder="Enter viewport width (e.g., 1280)" style="padding: 8px; width: 100%;">
+                </td>
+                <td>
+                    <label><strong>Viewport Height:</strong></label><br>
+                    <input type="number" id="viewportHeight" placeholder="Enter viewport height (e.g., 720)" style="padding: 8px; width: 100%;">
+                </td>
+                <td>
+                    <label><strong>Match Timeout (ms):</strong></label><br>
+                    <input type="number" id="matchTimeout" placeholder="Enter timeout (e.g., 2000)" style="padding: 8px; width: 100%;">
+                </td>
+            </tr>
+            <!-- Row 4 -->
+            <tr>
+                <td>
+                    <label><strong>Apple Device (Optional):</strong></label><br>
+                    <select id="appleDevice" style="padding: 8px; width: 100%;">
+                        <option value="">None</option>
+                        <option value="iPhone_15_Pro_Max">iPhone 15 Pro Max</option>
+                        <option value="iPhone_14_Pro">iPhone 14 Pro</option>
+                        <option value="iPhone_13_Pro">iPhone 13 Pro</option>
+                        <option value="iPhone_12">iPhone 12</option>
+                        <option value="iPad_Pro">iPad Pro</option>
+                    </select>
+                </td>
+                <td>
+                    <label><strong>Android Device (Optional):</strong></label><br>
+                    <select id="androidDevice" style="padding: 8px; width: 100%;">
+                        <option value="">None</option>
+                        <option value="Galaxy_S22_Ultra">Galaxy S22 Ultra</option>
+                        <option value="Galaxy_S22">Galaxy S22</option>
+                        <option value="Galaxy_S21">Galaxy S21</option>
+                        <option value="Galaxy_Note_20">Galaxy Note 20</option>
+                        <option value="Pixel_7_Pro">Pixel 7 Pro</option>
+                        <option value="Pixel_6">Pixel 6</option>
+                    </select>
+                </td>
+                <td>
+                    <label><strong>Match Level:</strong></label><br>
+                    <select id="matchLevel" style="padding: 8px; width: 100%;">
+                        <option value="STRICT">Strict</option>
+                        <option value="CONTENT">Content</option>
+                        <option value="LAYOUT">Layout</option>
+                        <option value="IGNORECOLORS">Ignore Colors</option>
+                    </select>
+                </td>
+            </tr>
+            <!-- Action Button -->
+            <tr>
+                <td colspan="3" style="text-align: center;">
+                    <label><strong>Choose Action:</strong></label><br>
+                    <select id="actionSelect" style="padding: 8px; width: 50%; margin-bottom: 10px;">
+                        <option value="viewCode">View Generated Code</option>
+                        <option value="download">Download as File</option>
+                    </select><br>
+                    <button type="button" onclick="generateCode()" style="padding: 10px; width: 50%;">Generate Code</button>
+                </td>
+            </tr>
+        </table>
+    </form>
 
-            <!-- Application Name -->
-            <div>
-                <label><strong>Application Name:</strong></label><br>
-                <input type="text" id="appName" placeholder="Enter the application name">
-            </div>
-
-            <!-- Test Name -->
-            <div>
-                <label><strong>Test Name:</strong></label><br>
-                <input type="text" id="testName" placeholder="Enter the test name">
-            </div>
-
-            <!-- Batch Info -->
-            <div>
-                <label><strong>Batch Name:</strong></label><br>
-                <input type="text" id="batchName" placeholder="Enter batch name (e.g., My Batch)">
-            </div>
-            <div>
-                <label><strong>Batch ID:</strong></label><br>
-                <input type="text" id="batchId" placeholder="Enter batch ID (e.g., batch-123)">
-            </div>
-
-            <!-- Browser -->
-            <div>
-                <label><strong>Desktop Browser:</strong></label><br>
-                <select id="browser">
-                    <option value="CHROME">Chrome</option>
-                    <option value="FIREFOX">Firefox</option>
-                    <option value="EDGE">Edge</option>
-                    <option value="SAFARI">Safari</option>
-                </select>
-            </div>
-
-            <!-- Viewport Size -->
-            <div>
-                <label><strong>Viewport Width:</strong></label><br>
-                <input type="number" id="viewportWidth" placeholder="Enter viewport width (e.g., 1280)">
-            </div>
-            <div>
-                <label><strong>Viewport Height:</strong></label><br>
-                <input type="number" id="viewportHeight" placeholder="Enter viewport height (e.g., 720)">
-            </div>
-
-            <!-- Apple Device -->
-            <div>
-                <label><strong>Apple Device (Optional):</strong></label><br>
-                <select id="appleDevice">
-                    <option value="">None</option>
-                    <option value="iPhone_15_Pro_Max">iPhone 15 Pro Max</option>
-                    <option value="iPhone_14_Pro">iPhone 14 Pro</option>
-                    <option value="iPhone_13_Pro">iPhone 13 Pro</option>
-                    <option value="iPhone_12">iPhone 12</option>
-                    <option value="iPad_Pro">iPad Pro</option>
-                </select>
-            </div>
-
-            <!-- Android Device -->
-            <div>
-                <label><strong>Android Device (Optional):</strong></label><br>
-                <select id="androidDevice">
-                    <option value="">None</option>
-                    <option value="Galaxy_S22_Ultra">Galaxy S22 Ultra</option>
-                    <option value="Galaxy_S22">Galaxy S22</option>
-                    <option value="Galaxy_S21">Galaxy S21</option>
-                    <option value="Galaxy_Note_20">Galaxy Note 20</option>
-                    <option value="Pixel_7_Pro">Pixel 7 Pro</option>
-                    <option value="Pixel_6">Pixel 6</option>
-                </select>
-            </div>
-
-            <!-- Match Level -->
-            <div>
-                <label><strong>Match Level:</strong></label><br>
-                <select id="matchLevel">
-                    <option value="STRICT">Strict</option>
-                    <option value="CONTENT">Content</option>
-                    <option value="LAYOUT">Layout</option>
-                    <option value="IGNORECOLORS">Ignore Colors</option>
-                </select>
-            </div>
-
-            <!-- Timeout -->
-            <div>
-                <label><strong>Match Timeout (ms):</strong></label><br>
-                <input type="number" id="matchTimeout" placeholder="Enter match timeout in milliseconds">
-            </div>
-
-            <!-- Dropdown for Generate or Download -->
-            <div>
-                <label><strong>Choose Action:</strong></label><br>
-                <select id="actionSelect">
-                    <option value="viewCode">View Generated Code</option>
-                    <option value="download">Download as File</option>
-                </select>
-            </div>
-
-            <!-- Generate Code Button -->
-            <button type="button" onclick="generateCode()">Generate Code</button>
-        </form>
-
-        <!-- Generated Code Section -->
-        <h2>Generated Code:</h2>
-        <pre id="codeSnippet" style="display: none;">Fill in the form and click "Generate Code" to see the result here.</pre>
-    </div>
+    <!-- Generated Code Section -->
+    <h2>Generated Code:</h2>
+    <pre id="codeSnippet" style="background-color: #f4f4f4; padding: 10px;">
+Fill in the form and click "Generate Code" to see the result here.
+    </pre>
 
     <script>
         function generateCode() {
@@ -131,54 +125,21 @@
             const browser = document.getElementById('browser').value || "CHROME";
             const viewportWidth = document.getElementById('viewportWidth').value || 1280;
             const viewportHeight = document.getElementById('viewportHeight').value || 720;
-            const appleDevice = document.getElementById('appleDevice').value || null;
-            const androidDevice = document.getElementById('androidDevice').value || null;
-            const matchLevel = document.getElementById('matchLevel').value || "STRICT";
             const matchTimeout = document.getElementById('matchTimeout').value || 2000;
-            const action = document.getElementById('actionSelect').value;
 
-            // Generate Java code
+            // Generate configuration snippet
             let code = `
-package com.yourcompany.utils;
-
-import com.applitools.eyes.selenium.Eyes;
-import com.applitools.eyes.selenium.Configuration;
-import com.applitools.eyes.selenium.BrowserType;
-import com.applitools.eyes.selenium.fluent.DesktopBrowserInfo;
-import com.applitools.eyes.selenium.fluent.IosDeviceInfo;
-import com.applitools.eyes.selenium.fluent.ChromeEmulationInfo;
-import com.applitools.eyes.RectangleSize;
-import com.applitools.eyes.selenium.fluent.ScreenOrientation;
-import org.openqa.selenium.WebDriver;
-
-public class ApplitoolsUtil {
-    private static final String APPLITOOLS_API_KEY = "${apiKey}";
-
-    public static void setConfig() {
-        Configuration config = new Configuration()
-            .setApiKey(APPLITOOLS_API_KEY)
-            .setAppName("${appName}")
-            .setTestName("${testName}")
-            .setBatch("${batchId}", "${batchName}")
-            .addBrowser(new DesktopBrowserInfo(${viewportWidth}, ${viewportHeight}, BrowserType.${browser}))
-            ${appleDevice ? `.addBrowser(new IosDeviceInfo(IosDeviceName.${appleDevice}, ScreenOrientation.PORTRAIT))` : ""}
-            ${androidDevice ? `.addBrowser(new ChromeEmulationInfo(DeviceName.${androidDevice}, ScreenOrientation.PORTRAIT))` : ""}
-            .setMatchLevel(MatchLevel.${matchLevel})
-            .setMatchTimeout(${matchTimeout});
-    }
-}
+Configuration config = new Configuration()
+    .setApiKey("${apiKey}")
+    .setAppName("${appName}")
+    .setTestName("${testName}")
+    .setBatch("${batchId}", "${batchName}")
+    .addBrowser(new DesktopBrowserInfo(${viewportWidth}, ${viewportHeight}, BrowserType.${browser}))
+    .setMatchTimeout(${matchTimeout});
             `.trim();
 
-            if (action === "viewCode") {
-                document.getElementById('codeSnippet').textContent = code;
-                document.getElementById('codeSnippet').style.display = 'block';
-            } else if (action === "download") {
-                const blob = new Blob([code], { type: 'text/java' });
-                const link = document.createElement('a');
-                link.href = URL.createObjectURL(blob);
-                link.download = 'ApplitoolsUtil.java';
-                link.click();
-            }
+            // Display the generated code in the pre block
+            document.getElementById('codeSnippet').textContent = code;
         }
     </script>
 </body>
